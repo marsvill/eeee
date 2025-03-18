@@ -133,11 +133,12 @@ end
 function Esp:RemoveObject(player)
     local objects = self.Objects[player]
     if objects then
-        for _, obj in pairs(objects) do
-            obj:Remove()
-        end
-        if objects.Highlight then
-            objects.Highlight:Destroy()
+        for name, obj in pairs(objects) do
+            if name ~= "Highlight" then
+                obj:Remove()
+            else
+                obj:Destroy() -- Destroy the Highlight instance
+            end
         end
         self.Highlights[player] = nil
         self.Objects[player] = nil
@@ -174,19 +175,26 @@ function Esp:UpdateObject(player)
         objects = self:CreateObject(player)
     end
     
-    -- Update transparencies
-    objects.Box.Transparency = self.Settings.BoxesTransparency
-    objects.BoxOutline.Transparency = self.Settings.BoxesTransparency
-    objects.Tracer.Transparency = self.Settings.TracerTransparency
-    objects.TracerOutline.Transparency = self.Settings.TracerTransparency
-    objects.Name.Transparency = self.Settings.NamesTransparency
-
-    -- Reset visibility
-    for _, obj in pairs(objects) do
-        obj.Visible = false
+    -- Update transparencies and reset visibility
+    for name, obj in pairs(objects) do
+        if name ~= "Highlight" then
+            obj.Visible = false
+            if name == "Box" or name == "BoxOutline" then
+                obj.Transparency = self.Settings.BoxesTransparency
+            elseif name == "Tracer" or name == "TracerOutline" then
+                obj.Transparency = self.Settings.TracerTransparency
+            elseif name == "Name" then
+                obj.Transparency = self.Settings.NamesTransparency
+            end
+        end
     end
 
-    if not self.Enabled then return end
+    if not self.Enabled then 
+        if objects.Highlight then
+            objects.Highlight.Enabled = false
+        end
+        return 
+    end
 
     local character = player.Character
     if not character then return end
