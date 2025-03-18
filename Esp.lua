@@ -14,6 +14,7 @@ local Esp = {
         Names = false,
         NamesColor = Color3.fromRGB(255, 255, 255),
         TextSize = 11,
+        NameYOffset = 0, -- Add this line
         TeamColor = false,
         TracerOrigin = "Bottom", -- "Bottom", "Mouse", "Top"
         TracerTransparency = 1,
@@ -158,7 +159,6 @@ function Esp:UpdateChams(player)
         return
     end
 
-    -- Update highlight settings
     highlight.Enabled = self.Settings.Chams.Enabled
     highlight.FillColor = self.Settings.Chams.FillColor
     highlight.FillTransparency = self.Settings.Chams.FillTransparency
@@ -263,7 +263,7 @@ function Esp:UpdateObject(player)
     end
 
     if self.Settings.Names then
-        local namePos = pos - Vector2.new(0, size.Y/2 + objects.Name.TextBounds.Y)
+        local namePos = pos - Vector2.new(0, size.Y/2 + objects.Name.TextBounds.Y + self.Settings.NameYOffset)
         objects.Name.Position = namePos
         objects.Name.Size = math.max(1000/depth, self.Settings.TextSize)
         objects.Name.Text = player.DisplayName or player.Name 
