@@ -19,7 +19,19 @@ local Esp = {
         TracerTransparency = 1,
         BoxesTransparency = 1,
         NamesTransparency = 1,
+        Chams = {
+            Enabled = false,
+            Color = Color3.fromRGB(255, 0, 0),
+            Transparency = 0.5,
+            AlwaysOnTop = true,
+            DepthMode = Enum.HighlightDepthMode.AlwaysOnTop,
+            FillColor = Color3.fromRGB(255, 0, 0),
+            FillTransparency = 0.5,
+            OutlineColor = Color3.fromRGB(255, 255, 255),
+            OutlineTransparency = 0
+        },
     },
+    Highlights = {},
 }
 getgenv().Esp = Esp
 local Camera = workspace.CurrentCamera
@@ -100,9 +112,20 @@ function Esp:CreateObject(player)
             Thickness = 1,
             Visible = false,
             ZIndex = 4
-        })
+        }),
+        Highlight = Instance.new("Highlight")
     }
 
+    if self.Settings.Chams.Enabled then
+        objects.Highlight.FillColor = self.Settings.Chams.FillColor
+        objects.Highlight.FillTransparency = self.Settings.Chams.FillTransparency
+        objects.Highlight.OutlineColor = self.Settings.Chams.OutlineColor
+        objects.Highlight.OutlineTransparency = self.Settings.Chams.OutlineTransparency
+        objects.Highlight.DepthMode = self.Settings.Chams.DepthMode
+        objects.Highlight.Enabled = true
+    end
+
+    self.Highlights[player] = objects.Highlight
     self.Objects[player] = objects
     return objects
 end
@@ -113,8 +136,36 @@ function Esp:RemoveObject(player)
         for _, obj in pairs(objects) do
             obj:Remove()
         end
+        if objects.Highlight then
+            objects.Highlight:Destroy()
+        end
+        self.Highlights[player] = nil
         self.Objects[player] = nil
     end
+end
+
+function Esp:UpdateChams(player)
+    local highlight = self.Highlights[player]
+    if not highlight then return end
+
+    local character = player.Character
+    if not character then return end
+
+    -- Team check
+    if self.Settings.TeamCheck and player.Team == LocalPlayer.Team then
+        highlight.Enabled = false
+        return
+    end
+
+    -- Update highlight settings
+    highlight.Enabled = self.Settings.Chams.Enabled
+    highlight.FillColor = self.Settings.Chams.FillColor
+    highlight.FillTransparency = self.Settings.Chams.FillTransparency
+    highlight.OutlineColor = self.Settings.Chams.OutlineColor
+    highlight.OutlineTransparency = self.Settings.Chams.OutlineTransparency
+    highlight.DepthMode = self.Settings.Chams.DepthMode
+    highlight.Adornee = character
+    highlight.Parent = character
 end
 
 function Esp:UpdateObject(player)
@@ -250,6 +301,8 @@ function Esp:UpdateObject(player)
         objects.HealthFill.To = barPos - Vector2.new(0, size.Y * healthPercent)
         objects.HealthFill.Visible = true
     end
+
+    self:UpdateChams(player)
 end
 
 function Esp:Toggle(enabled)
