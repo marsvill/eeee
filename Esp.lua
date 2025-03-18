@@ -209,6 +209,7 @@ function Esp:UpdateObject(player)
         objects.Name.Size = math.max(1000/depth, self.Settings.TextSize)
         objects.Name.Text = player.DisplayName or player.Name 
         objects.Name.Transparency = self.Settings.NamesTransparency
+        objects.Name.Font = self.Settings.Font -- Update the font
         objects.Name.Visible = true
         objects.Name.Color = NamesColor
     end
