@@ -1,6 +1,6 @@
 return {
     {
-        name = "Auto Prediction 1",
+        name = "Auto Prediction",
         predictions = {
             [300] = 0.368788005255,
             [290] = 0.35909146391,
