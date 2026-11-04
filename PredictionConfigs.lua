@@ -1,7 +1,7 @@
 return {
     {
-        Name = "Auto Prediction",
-        Predictions = {
+        name = "Auto Prediction",
+        predictions = {
             [300] = 0.368788005255,
             [290] = 0.35909146391,
             [280] = 0.349394922565,
@@ -34,8 +34,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 2", 
-        Predictions = {
+        name = "Auto Prediction 2", 
+        predictions = {
             [200] = 0.2330000000,
             [190] = 0.2230000000,
             [180] = 0.2130000000,
@@ -54,8 +54,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 3", 
-        Predictions = {
+        name = "Auto Prediction 3", 
+        predictions = {
             [50] = 0.1229,
             [51] = 0.125,
             [60] = 0.1229,
@@ -89,8 +89,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 4", 
-        Predictions = {
+        name = "Auto Prediction 4", 
+        predictions = {
             [190] = 0.166547,
             [180] = 0.19284,
             [170] = 0.1923111,
@@ -113,8 +113,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 5", 
-        Predictions = {
+        name = "Auto Prediction 5", 
+        predictions = {
             [200] = 0.1848,
             [190] = 0.1813,
             [180] = 0.1733,
@@ -138,8 +138,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 6", 
-        Predictions = {
+        name = "Auto Prediction 6", 
+        predictions = {
             [190] = 0.22554,
             [180] = 0.21722,
             [170] = 0.2089,
@@ -162,8 +162,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 7", 
-        Predictions = {
+        name = "Auto Prediction 7", 
+        predictions = {
             [300] = 0.16782,
             [250] = 0.16514,
             [200] = 0.16942,
@@ -188,8 +188,8 @@ return {
         }
     },
     {
-        Name = "Auto Prediction 8", 
-        Predictions = {
+        name = "Auto Prediction 8", 
+        predictions = {
             [200] = 0.2354,
             [190] = 0.2129,
             [180] = 0.1902,
