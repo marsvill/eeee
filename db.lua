@@ -384,15 +384,25 @@ while shared.afy and task.wait() do
     end
 
     if BestTraining == "Ki" then
-        -- Replays the supplied capture; position/aim fields have not been decoded.
-        ReplicatedStorage:WaitForChild("ByteNetReliable"):FireServer(
-            buffer.fromstring(string.char(
-                14, 114, 105, 142, 68, 244, 34, 244, 67, 224, 171, 11, 197,
-                0, 3, 0, 0, 0, 162, 202, 141, 68, 21, 112, 244, 67,
-                79, 233, 11, 197, 49, 30, 49, 55, 197, 86, 50, 191,
-                220, 244, 226, 54
-            ))
-        )
+        -- Captured packets; position/aim fields have not been decoded.
+        if game.PlaceId == 1362482151 then
+            ReplicatedStorage:WaitForChild("ByteNetUnreliable"):FireServer(
+                buffer.fromstring(string.char(
+                    2, 0, 0, 0, 0, 0, 64, 28, 70, 0, 0, 0, 0,
+                    0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 128
+                )),
+                nil
+            )
+        else
+            ReplicatedStorage:WaitForChild("ByteNetReliable"):FireServer(
+                buffer.fromstring(string.char(
+                    14, 114, 105, 142, 68, 244, 34, 244, 67, 224, 171, 11, 197,
+                    0, 3, 0, 0, 0, 162, 202, 141, 68, 21, 112, 244, 67,
+                    79, 233, 11, 197, 49, 30, 49, 55, 197, 86, 50, 191,
+                    220, 244, 226, 54
+                ))
+            )
+        end
     end
 end
 
