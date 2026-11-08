@@ -2,7 +2,7 @@
 -- Auto Zenkai Boost, Auto Farm Every Stat, Auto Reconnect, Auto Re-exec, Anti-AFK, Safe Farm, Auto Transform, Dragon Ball Finder
 
 local Flags = Flags or {
-    Type = 'Ki', -- Auto, Agility, Attack, Defense, Ki 
+    Type = 'Auto', -- Auto, Agility, Attack, Defense, Ki 
     ZenkaiBoost = true,
     SafeFarm = true,
     OptimalWorld = true,
