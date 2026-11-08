@@ -390,7 +390,8 @@ while shared.afy and task.wait() do
                 buffer.fromstring(string.char(
                     2, 0, 0, 0, 0, 0, 64, 28, 70, 0, 0, 0, 0,
                     0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 128
-                ))
+                )),
+                nil
             )
         else
             ReplicatedStorage:WaitForChild("ByteNetReliable"):FireServer(
