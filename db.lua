@@ -27,7 +27,7 @@ local KiBlastPayloads = {
     [71315343] = buffer.fromstring(string.char(14, 114, 105, 142, 68, 244, 34, 244, 67, 224, 171, 11, 197, 0, 3, 0, 0, 0, 162, 202, 141, 68, 21, 112, 244, 67, 79, 233, 11, 197, 49, 30, 49, 55, 197, 86, 50, 191, 220, 244, 226, 54)),
     [1357512648] = buffer.fromstring(string.char(13, 91, 72, 162, 68, 0, 212, 45, 192, 224, 108, 203, 196, 0, 3, 0, 0, 0, 157, 150, 139, 68, 24, 147, 196, 62, 174, 79, 224, 196, 218, 15, 73, 192, 246, 145, 80, 191, 218, 15, 73, 192)),
     [1362482151] = buffer.fromstring(string.char(14, 62, 151, 174, 68, 106, 1, 173, 66, 49, 148, 211, 193, 0, 1, 0, 0, 0, 193, 142, 170, 68, 34, 115, 179, 66, 62, 25, 37, 194, 182, 15, 73, 64, 243, 95, 2, 180, 219, 15, 73, 192)),
-    [3336119605] = buffer.fromstring(string.char(9, 65, 192, 142, 69, 90, 127, 243, 69, 135, 112, 6, 198, 0, 1, 0, 0, 0, 0, 0, 192, 191, 0, 65, 28, 70, 0, 0, 0, 192, 0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 128)),
+    [3336119605] = buffer.fromstring(string.char(14, 4, 138, 194, 68, 109, 63, 122, 69, 109, 38, 115, 197, 0, 1, 0, 0, 0, 45, 58, 193, 68, 47, 115, 122, 69, 229, 229, 113, 197, 209, 198, 140, 59, 58, 74, 92, 190, 49, 24, 48, 59)),
 }
 local KiBlastPayload = KiBlastPayloads[game.PlaceId]
 local KiBlastWarningShown = false
@@ -284,7 +284,7 @@ table.insert(Connections, Client.OnTeleport:Connect(function()
 
     queue_on_teleport(SerializedFlags..[[
         if afy then return end getgenv().afy = true
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/marsvill/eeee/refs/heads/main/db.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/afyzone/lua/refs/heads/main/Dragon%20Ball%20Rage/AutoFarm.lua'))()
     ]])
 end))
 
