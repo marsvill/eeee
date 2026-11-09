@@ -284,7 +284,7 @@ table.insert(Connections, Client.OnTeleport:Connect(function()
 
     queue_on_teleport(SerializedFlags..[[
         if afy then return end getgenv().afy = true
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/afyzone/lua/refs/heads/main/Dragon%20Ball%20Rage/AutoFarm.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/marsvill/eeee/refs/heads/main/db.lua'))()
     ]])
 end))
 
